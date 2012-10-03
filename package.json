@@ -1,0 +1,35 @@
+{
+    "name": "mtvn-util",
+    "version": "0.0.1",
+    "author": "gianni ferullo <giannif@gmail.com>",
+    "private": true,
+    "description": "util class, contains a inheritance, events, and a loader.",
+    "repository": {
+        "type": "git",
+        "url": "https://mtvn-player@github.com/mtvn-player/html5-metadata.git"
+    },
+    "config": {
+        "port": "3100"
+    },
+    "scripts": {
+        "debug": "node test"
+    },
+    "dependencies": {
+        "underscore": "*",
+        "reqwest" : "*",
+        "bean" : "*"
+    },
+    "devDependencies": {
+        "express": "*",
+        "ender": "*",
+        "grunt": "*",
+        "grunt-contrib": "*",
+        "grunt-rigger":"*",
+        "grunt-remove-logging" : "*",
+        "testem": "*"
+    },
+    "engine": {
+        "node": ">=0.6"
+    },
+    "main": "./dist/mtvn-util.js"
+}
