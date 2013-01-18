@@ -55,7 +55,7 @@ module.exports = function(grunt) {
         // this is the ender.js used for testing the playlist metadata as a standalone component.
         var done = this.async();
         require("ender").build(Object.keys(grunt.config("pkg").dependencies), {
-            output: "test/js/ender"
+            output: "src/third-party/ender"
         }, function() {
             done(true);
         });

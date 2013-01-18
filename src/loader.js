@@ -1,3 +1,4 @@
+/*globals Util $ _ */
 // TODO make this instantiatable? or just use it as a mix-in?
 Util.Loader = function() {
     // defeault request object.

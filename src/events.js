@@ -1,3 +1,4 @@
+/*globals Util $ */
 Util.Events = {
     on: function(type, callback) {
         $(this).bind(type, callback);

@@ -1,6 +1,7 @@
+/*globals Util _ */
 Util.extend = function(protoProps, staticProps) {
-    var parent = this;
-    var child;
+    var parent = this,
+        child;
 
     // The constructor function for the new subclass is either defined by you
     // (the "constructor" property in your `extend` definition), or defaulted

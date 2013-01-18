@@ -17,7 +17,7 @@
     "dependencies": {
         "underscore": "*",
         "reqwest" : "*",
-        "bean" : "*"
+        "jeesh" : "*"
     },
     "devDependencies": {
         "express": "*",
