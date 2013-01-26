@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Metadata Tests</title>
-  <link rel="stylesheet" href="qunit-1.9.0.css">
+  <link rel="stylesheet" href="qunit-1.10.0.css">
   <script>
    var MTVNPlayer = {},
     packages = {};
@@ -19,11 +19,13 @@
     if (location.hash === '#testem')
         document.write('<script src="/testem.js"></'+'script>')
   </script>
-  <script src="qunit-1.9.0.js"></script>
+  <script src="qunit-1.10.0.js"></script>
   <script src="../../dist/mtvn-util.js"></script>
 </head>
 <body>
   <div id="qunit"></div>
   <script src="test.js"></script>
+  <script src="form-factor-test.js"></script>
+  <script src="template-test.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 // lib/handlebars/base.js
 
 /*jshint eqnull:true*/
-this.Handlebars = {};
+var Handlebars = {};
 
 (function(Handlebars) {
 
@@ -108,7 +108,7 @@ Handlebars.registerHelper('log', function(context) {
   Handlebars.log(context);
 });
 
-}(this.Handlebars));
+}(Handlebars));
 ;
 // lib/handlebars/compiler/parser.js
 /* Jison generated parser */

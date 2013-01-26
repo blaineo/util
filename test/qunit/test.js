@@ -1,8 +1,7 @@
 /*globals MTVNPlayer test asyncTest expect equal ok start deepEqual*/
 (function() {
     test("class inheritance", function() {
-        var util = MTVNPlayer.require("util"),
-            Class = function() {
+        var Class = function() {
                 this.constructorWorked = true;
             }, Class2;
         Class.prototype = {
@@ -10,7 +9,7 @@
                 return "works";
             }
         };
-        Class.extend = util.extend;
+        Class.extend = MTVNPlayer.require("Backbone").Model.extend;
         Class2 = Class.extend({
             class2Func: function() {
                 return "class 2 func";
