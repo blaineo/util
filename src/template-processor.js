@@ -34,10 +34,12 @@ Util.buildTemplateData = function(player, extraData) {
         namespace: splitUri[3],
         id: splitUri[4]
     };
-    // metadata
+    // metadata for legacy
     data.metadata = player.currentMetadata;
     data.playlistMetadata = player.playlistMetadata;
-    // this is in flash player, not sure if used.
+    // future tempales can just access properties on the embed api.
+    data.player = player;
+    // legacy this is in flash player, not sure if used.
     data.app = {
         width: data.width,
         height: data.height
