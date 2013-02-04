@@ -13,6 +13,9 @@ Util.getFormFactorMap = function(formFactorID) {
  * Utily function used externally.
  */
 Util.getFormFactorValuesForId = function(formFactorID, id) {
+    if(!_.isString(formFactorID)){
+        throw new Error("mtvn-util: formFactorID must be string");
+    }
     var ffMap = Util.getFormFactorMap(formFactorID);
     return _.isArray(ffMap[id]) ? ffMap[id] : [];
 };
