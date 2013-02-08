@@ -29,6 +29,7 @@ module.exports = function(grunt) {
         jshint: {
             devel: {
                 options: {
+                    asi:false,
                     browser: true,
                     devel: true,
                     debug: true
@@ -50,15 +51,6 @@ module.exports = function(grunt) {
             files: ['grunt.js', 'src/*.*'],
             tasks: 'default'
         }
-    });
-    grunt.registerTask('ender', 'build ender js', function() {
-        // this is the ender.js used for testing the playlist metadata as a standalone component.
-        var done = this.async();
-        require("ender").build(Object.keys(grunt.config("pkg").dependencies), {
-            output: "src/third-party/ender"
-        }, function() {
-            done(true);
-        });
     });
     grunt.registerTask('default', 'clean lint:devel rig');
     grunt.registerTask('release', 'clean lint:release rig removelogging min');

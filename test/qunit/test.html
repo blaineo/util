@@ -3,11 +3,15 @@
 <head>
   <meta charset="utf-8">
   <title>Metadata Tests</title>
+  <script type="text/javascript" src="../../components/jquery/jquery.js"></script>
   <script type="text/javascript" src="../../components/underscore/underscore.js"></script>
   <link rel="stylesheet" href="qunit-1.11.0.css">
   <script>
-   var MTVNPlayer = {},
-    packages = {"_":_};
+    var MTVNPlayer = {},
+      packages = {
+        "$":$,
+        "_":_
+      };
     MTVNPlayer.require = function(name) {
         if(!packages[name]){
             throw new Error("MTNVPlayer: package " + name + " not found.");
@@ -17,11 +21,14 @@
     MTVNPlayer.provide = function(name, module) {
         packages[name] = module;
     };
-    if (location.hash === '#testem')
-        document.write('<script src="/testem.js"></'+'script>')
   </script>
   <script src="qunit-1.11.0.js"></script>
   <script src="../../dist/mtvn-util.js"></script>
+   <script>
+  if (location.hash === '#testem'){
+        document.write('<script src="/testem.js"></'+'script>')
+    }
+  </script>
 </head>
 <body>
   <div id="qunit"></div>

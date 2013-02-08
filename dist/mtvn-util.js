@@ -1,4 +1,4 @@
-/*! mtvn-util - v0.0.2 - 2013-02-04 05:02:42
+/*! mtvn-util - v0.0.2 - 2013-02-08 12:02:17
 * Copyright (c) Viacom 2013 */
 /*global Handlebars */
 (function(context) {
@@ -7,6 +7,7 @@
         previousHandlebars = context.Handlebars,
         Util = {},
         _ = MTVNPlayer.require("_");
+    // Backbone needs _, but should be able to use the var above, no?
     if(!context._){
         context._ = _;
     }
@@ -3432,30 +3433,48 @@
     }).call(this);
     
     // END THIRD PARTY CODE
-    // Handlebars has some weird scoping issues in 1.0.rc.1.
+    // Handlebars has some weird scoping issues in 1.0.rc.1,
+    // and I had to modify the source.
     MTVNPlayer.provide("Handlebars", Handlebars);
     MTVNPlayer.provide("Backbone", context.Backbone);
-    /*globals Util _ */
+    context.Backbone.$ = MTVNPlayer.require("$");
+    // mtvn specific util code below...
+    /*global Util _ */
+    /**
+     * @return {Object} Converts the string into a hash of form factor id and an {Array}. e.g. {0:[1],21:[0,1,2]}
+     */
     Util.getFormFactorMap = function(formFactorID) {
+        if(!_.isString(formFactorID)){
+            throw new Error("mtvn-util: formFactorID must be string");
+        }
         var ffMap = {};
         // split into individual form factors.
         _((formFactorID).split(".")).each(function(item) {
             item = item.split(":");
-            // a hash of each form factor id and its value e.g. {0:1.21:0,1,2}.
             ffMap[item[0]] = item[1].split(",");
         });
         return ffMap;
     };
     /**
-     * Utily function used externally.
+     * @return {Array} The array value for the form factor id e.g. [0,1,2] or [0]
      */
     Util.getFormFactorValuesForId = function(formFactorID, id) {
-        if(!_.isString(formFactorID)){
-            throw new Error("mtvn-util: formFactorID must be string");
-        }
         var ffMap = Util.getFormFactorMap(formFactorID);
         return _.isArray(ffMap[id]) ? ffMap[id] : [];
     };
+    /**
+     * Take a hash map of input, and return a map of the form factor values mapped to those values.
+     * ```javascript
+     * var myMap = mapFormFactorID("6:1,2",{"6":name:"share",value:["facebook","twitter","embed"]});
+     * \\ myMap.share = ["twitter","embed"];
+     *
+     * var myMap = mapFormFactorID("10:1",{"10":name:"fullEpisode",value:[false,true]});
+     * \\ myMap.fullEpisode = true;
+     *
+     * var myMap = mapFormFactorID("",{"10":name:"fullEpisode",value:[false,true],defaultValue:false});
+     * \\ myMap.fullEpisode = false;
+     * ```
+     */
     Util.mapFormFactorID = function(formFactorID, inputMap, copyTo) {
         var ffMap = Util.getFormFactorMap(formFactorID);
         // create an object if we're not augmenting one.
@@ -3474,7 +3493,7 @@
         });
         return copyTo;
     };
-    /*globals MTVNPlayer Util Handlebars _ */
+    /*global Util Handlebars _ */
     var templatePreprocess = function(text) {
         // we need to both support {uri} and {uri.id}, there is an obvious conflict there.
         return text.replace(/\{/g, "{{").replace(/\}/g, "}}").replace(/\{uri\./, "{uriParts.");
@@ -3522,6 +3541,12 @@
         };
         return data;
     };
+    /*global Util Backbone */
+    // copy Backbone's extend method.
+    Util.extend = Backbone.Model.extend;
+    /*global Util Backbone */
+    // copy Backbone's Events.
+    Util.Events = Backbone.Events;
     MTVNPlayer.provide("mtvn-util", Util);
     context.Handlebars = previousHandlebars;
     context.Backbone.noConflict();

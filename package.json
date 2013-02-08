@@ -6,22 +6,15 @@
     "description": "util class, contains a inheritance, events, and a loader.",
     "repository": {
         "type": "git",
-        "url": "https://mtvn-player@github.com/mtvn-player/html5-metadata.git"
-    },
-    "config": {
-        "port": "3100"
+        "url": "https://mtvn-player@github.com/mtvn-player/mtvn-util.git"
     },
     "scripts": {
-        "debug": "node test"
+        "test": "testem ci"
     },
     "dependencies": {
-        "underscore": "*",
-        "reqwest" : "*",
-        "jeesh" : "*"
+        "underscore": "*"
     },
     "devDependencies": {
-        "express": "*",
-        "ender": "*",
         "grunt": "*",
         "grunt-contrib": "*",
         "grunt-rigger":"*",
