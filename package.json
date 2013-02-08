@@ -1,6 +1,6 @@
 {
     "name": "mtvn-util",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "author": "gianni ferullo <giannif@gmail.com>",
     "private": true,
     "description": "util class, contains a inheritance, events, and a loader.",
