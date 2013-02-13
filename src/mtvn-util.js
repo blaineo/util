@@ -4,20 +4,24 @@
         // no noConflict method for these guys.
         previousHandlebars = context.Handlebars,
         Util = {},
+        Backbone,
         _ = MTVNPlayer.require("_");
-    // Backbone needs _, but should be able to use the var above, no?
-    if(!context._){
-        context._ = _;
-    }
     // BEGIN THIRD PARTY CODE
     //= ../components/handlebars/handlebars.js
-    //= ../components/backbone/backbone.js
-    // END THIRD PARTY CODE
     // Handlebars has some weird scoping issues in 1.0.rc.1,
     // and I had to modify the source.
     MTVNPlayer.provide("Handlebars", Handlebars);
-    MTVNPlayer.provide("Backbone", context.Backbone);
-    context.Backbone.$ = MTVNPlayer.require("$");
+    // change "this" to a custom scope that has _ and $.
+    (function() {
+        //= ../components/backbone/backbone.js
+        MTVNPlayer.provide("Backbone", this.Backbone);
+        Backbone = this.Backbone;
+        Backbone.$ = this.$;
+    }).apply({
+        _: _,
+        $: MTVNPlayer.require("$")
+    });
+    // END THIRD PARTY CODE
     // mtvn specific util code below...
     //= form-factor.js
     //= template-processor.js
@@ -25,5 +29,5 @@
     //= events.js
     MTVNPlayer.provide("mtvn-util", Util);
     context.Handlebars = previousHandlebars;
-    context.Backbone.noConflict();
+    Backbone.noConflict();
 })(this);

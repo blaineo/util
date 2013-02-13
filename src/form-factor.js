@@ -3,15 +3,16 @@
  * @return {Object} Converts the string into a hash of form factor id and an {Array}. e.g. {0:[1],21:[0,1,2]}
  */
 Util.getFormFactorMap = function(formFactorID) {
-    if(!_.isString(formFactorID)){
-        throw new Error("mtvn-util: formFactorID must be string");
-    }
     var ffMap = {};
     // split into individual form factors.
-    _((formFactorID).split(".")).each(function(item) {
-        item = item.split(":");
-        ffMap[item[0]] = item[1].split(",");
-    });
+    if(formFactorID) {
+        _((formFactorID).split(".")).each(function(item) {
+            item = item.split(":");
+            if(item.length === 2) {
+                ffMap[item[0]] = item[1].split(",");
+            }
+        });
+    }
     return ffMap;
 };
 /**
@@ -40,7 +41,7 @@ Util.mapFormFactorID = function(formFactorID, inputMap, copyTo) {
     copyTo = copyTo || {};
     // take the input map and for each item reference the form factor object
     _(inputMap).each(function(item, key) {
-        if (_(ffMap).has(key)) {
+        if(_(ffMap).has(key)) {
             // if there's more than one value for a form factor index, map them...
             copyTo[item.name] = ffMap[key].length > 1 ? _(ffMap[key]).map(function(value) {
                 return item.value[value];
