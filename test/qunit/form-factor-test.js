@@ -1,7 +1,6 @@
-/*globals MTVNPlayer test asyncTest expect equal ok start deepEqual*/
+/*globals MTVNPlayer, test, equal */
 test("form factors", function() {
-    var ffId = "0:1",
-        inputMap = {
+    var inputMap = {
             "0": {
                 name: "zero",
                 defaultValue:["zeroDefault","zeroDefault2"],
@@ -15,6 +14,9 @@ test("form factors", function() {
             "something" : {
                 name:"somethingElse",
                 value: ["weird"]
+            },
+            "13" : {
+                name:"countdownTime"
             }
         },
         util = MTVNPlayer.require("mtvn-util"),
@@ -37,4 +39,7 @@ test("form factors", function() {
     // 
     result = util.mapFormFactorID("something:0", inputMap);
     equal(result.somethingElse, "weird", "something:0");
+    //
+    result = util.mapFormFactorID("13:30", inputMap);
+    equal(result.countdownTime, "30", "using value");
 });

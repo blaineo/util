@@ -19,7 +19,7 @@
         Backbone.$ = this.$;
     }).apply({
         _: _,
-        $: MTVNPlayer.require("$")
+        $: MTVNPlayer.has("$") ? MTVNPlayer.require("$") : null
     });
     // END THIRD PARTY CODE
     // mtvn specific util code below...

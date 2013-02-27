@@ -21,6 +21,9 @@
     MTVNPlayer.provide = function(name, module) {
         packages[name] = module;
     };
+    MTVNPlayer.has = function(name) {
+          return packages[name];
+      };
   </script>
   <script src="qunit-1.11.0.js"></script>
   <script src="../../dist/mtvn-util.js"></script>
