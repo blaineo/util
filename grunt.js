@@ -1,4 +1,5 @@
 module.exports = function(grunt) {
+    var deployPath = 'build/<%= grunt.config("dirname") %><%= pkg.version %><%= grunt.config("buildNumber") %>/';
     grunt.loadNpmTasks('grunt-rigger');
     grunt.loadNpmTasks('grunt-contrib');
     grunt.loadNpmTasks('grunt-remove-logging');
@@ -47,11 +48,28 @@ module.exports = function(grunt) {
                 dest: 'dist/<%= pkg.name %>.js'
             }
         },
+        copy: {
+            build: {
+                src: "dist/**/*",
+                dest: deployPath
+            },
+            test: {
+                src: "test/**/*",
+                dest: deployPath + "/test/"
+            },
+            components: {
+                src: "components/**/*",
+                dest: deployPath + "/components/"
+            }
+        },
         watch: {
             files: ['grunt.js', 'src/*.*'],
             tasks: 'default'
         }
     });
+    grunt.registerTask('buildNumber', 'append a build number to the build', function (buildNumber) {
+        grunt.config("buildNumber", "-" + buildNumber);
+    });
     grunt.registerTask('default', 'clean lint:devel rig');
-    grunt.registerTask('release', 'clean lint:release rig removelogging min');
+    grunt.registerTask('release', 'clean lint:release rig removelogging min copy');
 };

@@ -15,10 +15,10 @@
         "underscore": "*"
     },
     "devDependencies": {
-        "grunt": "*",
-        "grunt-contrib": "*",
+        "grunt": "0.3.17",
+        "grunt-contrib" : "0.3.0",
         "grunt-rigger":"*",
-        "grunt-remove-logging" : "*",
+        "grunt-remove-logging" : "0.0.5",
         "testem": "*"
     },
     "engine": {
