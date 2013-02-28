@@ -3583,4 +3583,4 @@
     Backbone.noConflict();
 })(this);
 MTVNPlayer.require("mtvn-util").version = "0.1.0";
-MTVNPlayer.require("mtvn-util").build = "2013-02-28 11:02:44";
+MTVNPlayer.require("mtvn-util").build = "2013-02-28 11:02:42";
