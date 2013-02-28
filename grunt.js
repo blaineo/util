@@ -1,3 +1,4 @@
+/*global module */
 module.exports = function(grunt) {
     var deployPath = 'build/<%= grunt.config("dirname") %><%= pkg.version %><%= grunt.config("buildNumber") %>/';
     grunt.loadNpmTasks('grunt-rigger');
@@ -6,7 +7,8 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: '<json:package.json>',
         meta: {
-            banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd hh:mm:ss") %>\n* Copyright (c) Viacom <%= grunt.template.today("yyyy") %> */'
+            version: 'MTVNPlayer.require("<%= pkg.name %>").version = "<%= pkg.version %><%= grunt.config("buildNumber") %>";',
+            buildDate: 'MTVNPlayer.require("<%= pkg.name %>").build = "<%= grunt.template.today("yyyy-mm-dd hh:mm:ss") %>";'
         },
         clean: {
             folder: ["dist/*", "build/*"]
@@ -44,7 +46,7 @@ module.exports = function(grunt) {
         },
         rig: {
             devel: {
-                src: ['<banner:meta.banner>', 'src/<%= pkg.name %>.js'],
+                src: ['src/<%= pkg.name %>.js','<banner:meta.version>', '<banner:meta.buildDate>' ],
                 dest: 'dist/<%= pkg.name %>.js'
             }
         },

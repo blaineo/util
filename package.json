@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "author": "gianni ferullo <giannif@gmail.com>",
     "private": true,
-    "description": "util class, contains a inheritance, events, and a loader.",
+    "description": "util class, contains form factor parsing and backbone",
     "repository": {
         "type": "git",
         "url": "https://mtvn-player@github.com/mtvn-player/mtvn-util.git"
@@ -11,18 +11,12 @@
     "scripts": {
         "test": "testem ci"
     },
-    "dependencies": {
-        "underscore": "*"
-    },
     "devDependencies": {
         "grunt": "0.3.17",
         "grunt-contrib" : "0.3.0",
         "grunt-rigger":"*",
         "grunt-remove-logging" : "0.0.5",
         "testem": "*"
-    },
-    "engine": {
-        "node": ">=0.6"
     },
     "main": "./dist/mtvn-util.js"
 }

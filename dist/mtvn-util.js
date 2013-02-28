@@ -1,5 +1,3 @@
-/*! mtvn-util - v0.1.0 - 2013-02-27 05:02:27
-* Copyright (c) Viacom 2013 */
 /*global Handlebars */
 (function(context) {
     var MTVNPlayer = context.MTVNPlayer = context.MTVNPlayer || {},
@@ -3467,6 +3465,29 @@
         var ffMap = Util.getFormFactorMap(formFactorID);
         return _.isArray(ffMap[id]) ? ffMap[id] : [];
     };
+    Util.formFactorIgnoreOutOfRange = false;
+    /**
+     * Get the value from the item.
+     * If defined, item.value is an array, the index is the item in the array we want.
+     * If the index is undefined, we look for a defaultValue.
+     * If it's undefined we just return the index.
+     */
+    Util.getFormFactorValue = function(item, index) {
+        if (_.isUndefined(index) && !_.isUndefined(item.defaultValue)) {
+            return item.defaultValue;
+        }
+        // if the value is an array, pull the index.
+        if (_.isArray(item.value)) {
+            // set index to 0 if not defined.
+            index = index || 0;
+            if(!Util.formFactorIgnoreOutOfRange && index > item.value.length - 1){
+                throw "form factor index out of range for " + item.name;
+            }
+            return item.value[index];
+        }
+        // return the index if value isn't defined
+        return index;
+    };
     /**
      * Take a hash map of input, and return a map of the form factor values mapped to those values.
      * ```javascript
@@ -3480,19 +3501,6 @@
      * \\ myMap.fullEpisode = false;
      * ```
      */
-    Util.getValue = function(item, index) {
-        if (_.isUndefined(index) && item.defaultValue) {
-            return item.defaultValue;
-        }
-        // set index to 0 if not defined.
-        index = index || 0;
-        // if the value is an array, pull the index.
-        if (_.isArray(item.value)) {
-            return item.value[index];
-        }
-        // else return the index if the item.value is undefined.
-        return _.isUndefined(item.value) ? index : item.value;
-    };
     Util.mapFormFactorID = function(formFactorID, inputMap, copyTo) {
         var mapFromString = Util.getFormFactorMap(formFactorID);
         // create an object if we're not augmenting one.
@@ -3503,11 +3511,11 @@
             if (_(mapFromString).has(id)) {
                 // take the string array of values and map them.
                 copyTo[item.name] = _(mapFromString[id]).map(function(value) {
-                    return Util.getValue(item, value);
+                    return Util.getFormFactorValue(item, value);
                 });
             } else {
                 // otherwise use the default, which is the 0 value, unless defaultValue is defined.
-                copyTo[item.name] = Util.getValue(item);
+                copyTo[item.name] = Util.getFormFactorValue(item);
             }
         });
         return copyTo;
@@ -3570,3 +3578,5 @@
     context.Handlebars = previousHandlebars;
     Backbone.noConflict();
 })(this);
+MTVNPlayer.require("mtvn-util").version = "0.1.0";
+MTVNPlayer.require("mtvn-util").build = "2013-02-28 11:02:19";
