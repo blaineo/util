@@ -1,4 +1,4 @@
-/*globals MTVNPlayer, test, equal, QUnit, ok*/
+/*globals MTVNPlayer, test, strictEqual, QUnit, ok*/
 test("form factors", function() {
     var inputMap = {
         "0": {
@@ -25,27 +25,28 @@ test("form factors", function() {
     },
     util = MTVNPlayer.require("mtvn-util"),
         result = util.mapFormFactorID("0:0", inputMap);
-    equal(result.zero, "one", "0:0");
+    strictEqual(result.zero, "one", "0:0");
     result = util.mapFormFactorID("0:1", inputMap);
-    equal(result.zero, "two", "0:1");
+    strictEqual(result.zero, "two", "0:1");
     // test default
     result = util.mapFormFactorID("1:0", inputMap);
-    equal(result.ten, "10default", "default");
+    strictEqual(result.ten, "10default", "default");
     //
     result = util.mapFormFactorID("10:0", inputMap);
-    equal(result.zero.toString(), inputMap["0"].defaultValue.toString(), "default");
+    strictEqual(result.zero.toString(), inputMap["0"].defaultValue.toString(), "default");
     //
     result = util.mapFormFactorID("10:0,1", inputMap);
-    equal(result.ten.toString(), ["10one", "10two"].toString(), "10:0,1");
+    strictEqual(result.ten.toString(), ["10one", "10two"].toString(), "10:0,1");
     //
     result = util.mapFormFactorID("10:2,1", inputMap);
-    equal(result.ten.toString(), ["10three", "10two"].toString(), "10:2,1");
+    strictEqual(result.ten.toString(), ["10three", "10two"].toString(), "10:2,1");
     // 
     result = util.mapFormFactorID("something:0", inputMap);
-    equal(result.somethingElse, "weird", "something:0");
+    strictEqual(result.somethingElse, "weird", "something:0");
     //
     result = util.mapFormFactorID("13:30", inputMap);
-    equal(result.countdownTime, "30", "using value");
+    console.log("4 result.countdownTime",result.countdownTime);
+    strictEqual(result.countdownTime, "30", "using value");
     // 
     QUnit.throws(
 
@@ -57,8 +58,6 @@ test("form factors", function() {
     try{
         util.mapFormFactorID("11:5", inputMap);
         ok(true,"ignore out of range");
-    }catch(e){
-        
-    }
+    }catch(e){}
     util.formFactorIgnoreOutOfRange = false;
 });

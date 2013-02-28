@@ -3510,9 +3510,13 @@
             // if the string passed has the id in it
             if (_(mapFromString).has(id)) {
                 // take the string array of values and map them.
-                copyTo[item.name] = _(mapFromString[id]).map(function(value) {
+                var result = _(mapFromString[id]).map(function(value) {
                     return Util.getFormFactorValue(item, value);
                 });
+                if(result.length === 1){
+                    result = result[0];
+                }
+                copyTo[item.name] = result;
             } else {
                 // otherwise use the default, which is the 0 value, unless defaultValue is defined.
                 copyTo[item.name] = Util.getFormFactorValue(item);
@@ -3579,4 +3583,4 @@
     Backbone.noConflict();
 })(this);
 MTVNPlayer.require("mtvn-util").version = "0.1.0";
-MTVNPlayer.require("mtvn-util").build = "2013-02-28 11:02:19";
+MTVNPlayer.require("mtvn-util").build = "2013-02-28 11:02:44";
