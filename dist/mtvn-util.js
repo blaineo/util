@@ -1,4 +1,4 @@
-/*global Handlebars */
+
 (function(context) {
     var MTVNPlayer = context.MTVNPlayer = context.MTVNPlayer || {},
         // no noConflict method for these guys.
@@ -3441,7 +3441,7 @@
     });
     // END THIRD PARTY CODE
     // mtvn specific util code below...
-    /*global Util, _ */
+    
     /**
      * @return {Object} Converts the string into a hash of form factor id and an {Array}. e.g. {0:[1],21:[0,1,2]}
      */
@@ -3513,7 +3513,10 @@
                 var result = _(mapFromString[id]).map(function(value) {
                     return Util.getFormFactorValue(item, value);
                 });
-                if(result.length === 1){
+                // sometimes we want a single result to be an array, 
+                // and sometimes we want it to be an object.
+                item.format = _.isString(item.format) ? item.format : "";
+                if(result.length === 1 && item.format.toLowerCase() !== "array"){
                     result = result[0];
                 }
                 copyTo[item.name] = result;
@@ -3524,7 +3527,7 @@
         });
         return copyTo;
     };
-    /*global Util Handlebars _ */
+    
     var templatePreprocess = function(text) {
         // we need to both support {uri} and {uri.id}, there is an obvious conflict there.
         return text.replace(/\{/g, "{{").replace(/\}/g, "}}").replace(/\{uri\./, "{uriParts.");
@@ -3572,10 +3575,10 @@
         };
         return data;
     };
-    /*global Util Backbone */
+    
     // copy Backbone's extend method.
     Util.extend = Backbone.Model.extend;
-    /*global Util Backbone */
+    
     // copy Backbone's Events.
     Util.Events = Backbone.Events;
     MTVNPlayer.provide("mtvn-util", Util);
@@ -3583,4 +3586,4 @@
     Backbone.noConflict();
 })(this);
 MTVNPlayer.require("mtvn-util").version = "0.1.0";
-MTVNPlayer.require("mtvn-util").build = "2013-02-28 11:02:42";
+MTVNPlayer.require("mtvn-util").build = "2013-03-07 11:03:53";
