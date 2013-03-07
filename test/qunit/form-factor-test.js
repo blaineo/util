@@ -1,4 +1,4 @@
-/*globals MTVNPlayer, test, strictEqual, QUnit, ok*/
+/*globals MTVNPlayer, test, strictEqual, QUnit, ok, _ */
 test("form factors", function() {
     var inputMap = {
         "0": {
@@ -18,6 +18,11 @@ test("form factors", function() {
         "13": {
             name: "countdownTime"
         },
+        "testArray": {
+            name:"testArray",
+            value:["one","two","three"],
+            format:"array"
+        },
         "11": {
             name: "outOfRange",
             value: ["f", "u", "n"]
@@ -35,6 +40,11 @@ test("form factors", function() {
     result = util.mapFormFactorID("10:0", inputMap);
     strictEqual(result.zero.toString(), inputMap["0"].defaultValue.toString(), "default");
     //
+    result = util.mapFormFactorID("testArray:0", inputMap);
+    ok(_.isArray(result.testArray), "test array");
+    strictEqual(result.testArray.length,1, "test array length");
+    strictEqual(result.testArray[0].toString(), inputMap["testArray"].value[0].toString(), "test array");
+    //
     result = util.mapFormFactorID("10:0,1", inputMap);
     strictEqual(result.ten.toString(), ["10one", "10two"].toString(), "10:0,1");
     //
@@ -45,7 +55,6 @@ test("form factors", function() {
     strictEqual(result.somethingElse, "weird", "something:0");
     //
     result = util.mapFormFactorID("13:30", inputMap);
-    console.log("4 result.countdownTime",result.countdownTime);
     strictEqual(result.countdownTime, "30", "using value");
     // 
     QUnit.throws(

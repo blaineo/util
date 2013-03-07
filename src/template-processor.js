@@ -1,4 +1,4 @@
-/*global Util Handlebars _ */
+/*global Util, Handlebars, _ */
 var templatePreprocess = function(text) {
     // we need to both support {uri} and {uri.id}, there is an obvious conflict there.
     return text.replace(/\{/g, "{{").replace(/\}/g, "}}").replace(/\{uri\./, "{uriParts.");

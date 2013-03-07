@@ -70,7 +70,10 @@ Util.mapFormFactorID = function(formFactorID, inputMap, copyTo) {
             var result = _(mapFromString[id]).map(function(value) {
                 return Util.getFormFactorValue(item, value);
             });
-            if(result.length === 1){
+            // sometimes we want a single result to be an array, 
+            // and sometimes we want it to be an object.
+            item.format = _.isString(item.format) ? item.format : "";
+            if(result.length === 1 && item.format.toLowerCase() !== "array"){
                 result = result[0];
             }
             copyTo[item.name] = result;

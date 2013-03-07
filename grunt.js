@@ -32,7 +32,7 @@ module.exports = function(grunt) {
         jshint: {
             devel: {
                 options: {
-                    asi:false,
+                    asi: false,
                     browser: true,
                     devel: true,
                     debug: true
@@ -46,7 +46,7 @@ module.exports = function(grunt) {
         },
         rig: {
             devel: {
-                src: ['src/<%= pkg.name %>.js','<banner:meta.version>', '<banner:meta.buildDate>' ],
+                src: ['src/<%= pkg.name %>.js', '<banner:meta.version>', '<banner:meta.buildDate>'],
                 dest: 'dist/<%= pkg.name %>.js'
             }
         },
@@ -69,9 +69,14 @@ module.exports = function(grunt) {
             tasks: 'default'
         }
     });
-    grunt.registerTask('buildNumber', 'append a build number to the build', function (buildNumber) {
+    grunt.registerTask('remove-globals', 'clean up', function() {
+        var globals = /\/\*global.*\*\//gi,
+            target = "dist/mtvn-util.js";
+        grunt.file.write(target, grunt.file.read(target).replace(globals, ""));
+    });
+    grunt.registerTask('buildNumber', 'append a build number to the build', function(buildNumber) {
         grunt.config("buildNumber", "-" + buildNumber);
     });
     grunt.registerTask('default', 'clean lint:devel rig');
-    grunt.registerTask('release', 'clean lint:release rig removelogging min copy');
+    grunt.registerTask('release', 'clean lint:release rig removelogging remove-globals min copy');
 };
