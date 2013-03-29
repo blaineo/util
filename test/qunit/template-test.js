@@ -1,4 +1,4 @@
-/*globals MTVNPlayer test asyncTest expect equal ok start deepEqual*/
+/*global MTVNPlayer, test, asyncTest, expect, equal, ok, start, deepEqual*/
 test("template test", function() {
     var util = MTVNPlayer.require("mtvn-util");
     equal(util.template("http://media.mtvnservices.com/{uri}", {

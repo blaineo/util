@@ -25,6 +25,7 @@
     // mtvn specific util code below...
     //= form-factor.js
     //= template-processor.js
+    //= fullscreen.js
     //= class.js
     //= events.js
     MTVNPlayer.provide("mtvn-util", Util);
