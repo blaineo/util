@@ -1,7 +1,11 @@
-/*global Util, Handlebars, _ */
+/*global Util, _ */
 var templatePreprocess = function(text) {
+    // first, support legacy template format of {data}
+    return text.replace(/\{{1,}/g, "{{").replace(/\}{1,}/g, "}}")
     // we need to both support {uri} and {uri.id}, there is an obvious conflict there.
-    return text.replace(/\{/g, "{{").replace(/\}/g, "}}").replace(/\{uri\./, "{uriParts.");
+    .replace(/\{uri\./, "{uriParts.")
+    // last, scope the data, this lets us have undefined vars.
+    .replace(/\{{2,}/g, "{{data.");
 };
 
 /**
@@ -10,13 +14,21 @@ var templatePreprocess = function(text) {
 Util.template = function(text, data, keys) {
     // parse strings like {uri}
     if (_.isString(text)) {
-        return Handlebars.compile(templatePreprocess(text))(data);
+        return _.template(templatePreprocess(text), {
+            data: data
+        }, {
+            interpolate: /\{\{(.+?)\}\}/g
+        });
     } else {
         _(text).each(function(prop, key) {
-            if (!keys || _.contains(keys,key)) {
+            if (!keys || _.contains(keys, key)) {
                 // do an extra check to make sure there is a template, perhaps enhancing performance.
                 if (_.isString(prop) && prop.indexOf("{") !== -1) {
-                    text[key] = Handlebars.compile(templatePreprocess(prop))(data);
+                    text[key] = _.template(templatePreprocess(prop), {
+                        data: data
+                    }, {
+                        interpolate: /\{\{(.+?)\}\}/g
+                    });
                 }
             }
         });
