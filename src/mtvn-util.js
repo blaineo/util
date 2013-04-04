@@ -7,7 +7,7 @@
         Backbone,
         _ = MTVNPlayer.require("_");
     // BEGIN THIRD PARTY CODE
-    //= ../components/handlebars/handlebars.js
+    //= ../components/handlebars/handlebars.runtime.js
     // Handlebars has some weird scoping issues in 1.0.rc.1,
     // and I had to modify the source.
     MTVNPlayer.provide("Handlebars", Handlebars);

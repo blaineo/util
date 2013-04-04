@@ -7,6 +7,9 @@ test("template test", function() {
     equal(util.template("{uri} and {uri}", {
         uri: "12345"
     }), "12345 and 12345", "one value");
+    equal(util.template("{{uri}} and {{uri}}", {
+        uri: "12345"
+    }), "12345 and 12345", "using handlebars in template value");
     equal(util.template("{uri} and {uri2}", {
         uri: "12345",
         uri2: "4567"
