@@ -1897,7 +1897,7 @@
             id: splitUri[4]
         };
         // metadata for legacy
-        data.metadata = player.currentMetadata;
+        data.metadata = player.currentMetadata ? player.currentMetadata.rss : null;
         data.playlistMetadata = player.playlistMetadata;
         // future tempales can just access properties on the embed api.
         data.player = player;
@@ -1970,5 +1970,5 @@
     context.Handlebars = previousHandlebars;
     Backbone.noConflict();
 })(this);
-MTVNPlayer.require("mtvn-util").version = "0.3.0";
-MTVNPlayer.require("mtvn-util").build = "2013-04-04 02:04:05";
+MTVNPlayer.require("mtvn-util").version = "0.4.0";
+MTVNPlayer.require("mtvn-util").build = "2013-04-07 03:04:40";
