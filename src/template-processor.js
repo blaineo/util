@@ -47,7 +47,7 @@ Util.buildTemplateData = function(player, extraData) {
         id: splitUri[4]
     };
     // metadata for legacy
-    data.metadata = player.currentMetadata;
+    data.metadata = player.currentMetadata ? player.currentMetadata.rss : null;
     data.playlistMetadata = player.playlistMetadata;
     // future tempales can just access properties on the embed api.
     data.player = player;

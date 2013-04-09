@@ -91,7 +91,7 @@ test("template data", function() {
     equal(result.uri, "mgid:uma:video:mtv.com:661024", "test uri");
     equal(result.uriParts.namespace, "mtv.com", "test namespace");
     equal(result.uriParts.id, "661024", "test id");
-    equal(result.metadata.rss.title, "title", "test metadata");
+    equal(result.metadata.title, "title", "test metadata");
     equal(result.playlistMetadata.link, "link", "test playlist metadata");
     equal(result.app.width, 360, "test app.width");
     equal(result.app.height, 480, "test app.height");
