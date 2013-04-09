@@ -1970,5 +1970,5 @@
     context.Handlebars = previousHandlebars;
     Backbone.noConflict();
 })(this);
-MTVNPlayer.require("mtvn-util").version = "0.4.0";
-MTVNPlayer.require("mtvn-util").build = "2013-04-09 03:04:52";
+MTVNPlayer.require("mtvn-util").version = "0.5.0";
+MTVNPlayer.require("mtvn-util").build = "2013-04-09 03:04:08";
