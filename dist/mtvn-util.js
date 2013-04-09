@@ -1971,4 +1971,4 @@
     Backbone.noConflict();
 })(this);
 MTVNPlayer.require("mtvn-util").version = "0.4.0";
-MTVNPlayer.require("mtvn-util").build = "2013-04-07 03:04:40";
+MTVNPlayer.require("mtvn-util").build = "2013-04-09 03:04:52";
