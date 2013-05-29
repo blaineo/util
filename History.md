@@ -1,4 +1,14 @@
 
+0.5.0 / 2013-05-29 
+==================
+
+  * putting currentMetadata and metadata on the template object. more handlebars scoping.
+
+0.4.0 / 2013-05-01 
+==================
+  * Fixing unit test.
+  * checking if currentMetadata exists for template processor.
+
 0.3.0 / 2013-04-04 
 ==================
 

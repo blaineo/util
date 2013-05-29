@@ -1,7 +1,7 @@
 // lib/handlebars/base.js
 
 /*jshint eqnull:true*/
-this.Handlebars = {};
+var Handlebars = this.Handlebars = {};
 
 (function(Handlebars) {
 

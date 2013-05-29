@@ -46,6 +46,7 @@ Util.buildTemplateData = function(player, extraData) {
         namespace: splitUri[3],
         id: splitUri[4]
     };
+    data.currentMetadata = player.currentMetadata ? player.currentMetadata : null;
     // metadata for legacy
     data.metadata = player.currentMetadata ? player.currentMetadata.rss : null;
     data.playlistMetadata = player.playlistMetadata;

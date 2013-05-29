@@ -10,7 +10,7 @@
     // lib/handlebars/base.js
     
     /*jshint eqnull:true*/
-    this.Handlebars = {};
+    var Handlebars = this.Handlebars = {};
     
     (function(Handlebars) {
     
@@ -1896,6 +1896,7 @@
             namespace: splitUri[3],
             id: splitUri[4]
         };
+        data.currentMetadata = player.currentMetadata ? player.currentMetadata : null;
         // metadata for legacy
         data.metadata = player.currentMetadata ? player.currentMetadata.rss : null;
         data.playlistMetadata = player.playlistMetadata;
@@ -1970,5 +1971,5 @@
     context.Handlebars = previousHandlebars;
     Backbone.noConflict();
 })(this);
-MTVNPlayer.require("mtvn-util").version = "0.4.0";
-MTVNPlayer.require("mtvn-util").build = "2013-04-09 03:04:52";
+MTVNPlayer.require("mtvn-util").version = "0.5.0";
+MTVNPlayer.require("mtvn-util").build = "2013-05-13 10:05:47";
