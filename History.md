@@ -1,4 +1,9 @@
 
+0.6.0 / 2013-06-10 
+==================
+
+  * Adding Playlist class since it's shared across modules.
+
 0.5.0 / 2013-05-29 
 ==================
 
