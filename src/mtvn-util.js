@@ -28,6 +28,7 @@
     //= fullscreen.js
     //= class.js
     //= events.js
+    //= playlist.js
     MTVNPlayer.provide("mtvn-util", Util);
     context.Handlebars = previousHandlebars;
     Backbone.noConflict();
