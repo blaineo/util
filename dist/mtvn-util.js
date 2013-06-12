@@ -1762,6 +1762,82 @@
     });
     // END THIRD PARTY CODE
     // mtvn specific util code below...
+    /* global _, MTVNPlayer, Util */
+    /* exported Logger */
+    var Logger = (function() {
+    	var colors = {
+    		debug: "blue",
+    		info: "green",
+    		log: "#333",
+    		warn: "orange",
+    		error: "red"
+    	},
+    		noop = function() {},
+    		postMessage = window.postMessage || noop,
+    		consoleProps = ["debug", "log", "info", "error", "warn"],
+    		console = window.console || {};
+    	// pollyfill 
+    	_.each(consoleProps, function(prop) {
+    		if (!console[prop]) {
+    			console[prop] = noop;
+    		}
+    	});
+    
+    	if (!MTVNPlayer.debug) {
+    		MTVNPlayer.debug = [];
+    	}
+    
+    	function Logger(name) {
+    		this.prefix = name || "Logger";
+    		_.bindAll(this); // so loggers can be event handlers.
+    	}
+    
+    	function doLog(level, logger, args) {
+    		var loggers = MTVNPlayer.debug.toString().toLowerCase();
+    		if (loggers.indexOf("all") !== -1 || logger.prefix.toLowerCase().indexOf(loggers) !== -1) {
+    			var prefix = "[" + logger.prefix + "]";
+    			args = _.toArray(args);
+    			postMessage("logMessage:<span style=\"color:" + colors[level] + "\">" + prefix + " " + args + "</span>", "*");
+    			args.unshift(prefix);
+    			console[level].apply(console, args);
+    		}
+    	}
+    	_.extend(Logger.prototype, {
+    		debug: function() {
+    			doLog("debug", this, arguments);
+    		},
+    		info: function() {
+    			doLog("info", this, arguments);
+    		},
+    		log: function() {
+    			doLog("log", this, arguments);
+    		},
+    		warn: function() {
+    			doLog("warn", this, arguments);
+    		},
+    		error: function() {
+    			doLog("error", this, arguments);
+    		}
+    	});
+    	return Logger;
+    })();
+    Util.Logger = Logger;
+    /* global Util, Backbone */
+    // copy Backbone's extend method.
+    Util.extend = Backbone.Model.extend;
+    /* global Util, Logger*/
+    /* exported Module */
+    var Module = function(options) {
+    	this.options = options || {};
+    	this.logger = new Logger(options.loggerName || this.name || this.moduleId || "Logger");
+    	this.initialize.apply(this, arguments);
+    };
+    Module.prototype = {
+    	initialize: function() {},
+    	destroy: function() {}
+    };
+    Module.extend = Util.extend;
+    Util.Module = Module;
     
     /**
      * @return {Object} Converts the string into a hash of form factor id and an {Array}. e.g. {0:[1],21:[0,1,2]}
@@ -1962,9 +2038,6 @@
     	return FullScreen;
     }(document);	
     
-    // copy Backbone's extend method.
-    Util.extend = Backbone.Model.extend;
-    
     // copy Backbone's Events.
     Util.Events = Backbone.Events;
     /* global Util, _*/
@@ -2044,5 +2117,5 @@
     context.Handlebars = previousHandlebars;
     Backbone.noConflict();
 })(this);
-MTVNPlayer.require("mtvn-util").version = "0.6.0";
-MTVNPlayer.require("mtvn-util").build = "2013-06-10 04:06:35";
+MTVNPlayer.require("mtvn-util").version = "0.7.0";
+MTVNPlayer.require("mtvn-util").build = "2013-06-12 10:06:32";
