@@ -1,7 +1,6 @@
 /*global MTVNPlayer, test, equal, ok*/
 test("playlist test", function() {
 	var Playlist = MTVNPlayer.require("mtvn-util").Playlist;
-	console.debug("playlist-test.js:4 ", MTVNPlayer.require("mtvn-util"));
 	var playlist = new Playlist({
 		metadata: {
 			items: [{

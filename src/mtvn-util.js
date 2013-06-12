@@ -23,10 +23,12 @@
     });
     // END THIRD PARTY CODE
     // mtvn specific util code below...
+    //= logger.js
+    //= class.js
+    //= module.js
     //= form-factor.js
     //= template-processor.js
     //= fullscreen.js
-    //= class.js
     //= events.js
     //= playlist.js
     MTVNPlayer.provide("mtvn-util", Util);
