@@ -1,0 +1,20 @@
+{
+    "name": "mtvn-util",
+    "version": "1.0.0",
+    "main": ["./dist/mtvn-util"],
+    "ignore": [
+            "**/.*",
+            "test",
+            "src",
+            "testem.json",
+            "build",
+            "node_modules",
+            "components"
+    ],
+    "dependencies": {
+        "underscore": "underscore#1.4.4",
+        "backbone": "#1.0.0",
+        "mtvn-package-manager": "mtvn-player/mtvn-package-manager#0.4.0",
+        "handlebars": "handlebars.js#1.0.0"
+    }
+}
