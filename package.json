@@ -1,6 +1,6 @@
 {
     "name": "mtvn-util",
-    "version": "0.7.0",
+    "version": "1.0.0",
     "author": "gianni ferullo <giannif@gmail.com>",
     "private": true,
     "description": "util class, contains form factor parsing and backbone",
@@ -8,15 +8,19 @@
         "type": "git",
         "url": "https://mtvn-player@github.com/mtvn-player/mtvn-util.git"
     },
-    "scripts": {
-        "test": "testem ci"
-    },
     "devDependencies": {
-        "grunt": "0.3.17",
-        "grunt-contrib" : "0.3.0",
-        "grunt-rigger":"0.3.0",
-        "grunt-remove-logging" : "0.0.5",
-        "testem": "*"
+        "grunt": "0.4.x",
+        "grunt-contrib": "0.4.x",
+        "grunt-contrib-uglify": "*",
+        "grunt-rigger": "~0.5.0",
+        "grunt-remove-logging": "0.1.x",
+        "grunt-contrib-watch": "~0.3.1",
+        "grunt-contrib-jshint": "~0.4.3",
+        "grunt-contrib-clean": "~0.4.1",
+        "grunt-contrib-copy": "~0.4.1",
+        "grunt-contrib-concat": "~0.3.0",
+        "grunt-bumpx": "~0.1.5",
+        "grunt-testem": "~0.3.5"
     },
     "main": "./dist/mtvn-util.js"
 }

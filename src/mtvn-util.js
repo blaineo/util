@@ -8,8 +8,6 @@
         _ = MTVNPlayer.require("_");
     // BEGIN THIRD PARTY CODE
     //= ../components/handlebars/handlebars.runtime.js
-    // Handlebars has some weird scoping issues in 1.0.rc.1,
-    // and I had to modify the source.
     MTVNPlayer.provide("Handlebars", Handlebars);
     // change "this" to a custom scope that has _ and $.
     (function() {
