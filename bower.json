@@ -16,7 +16,7 @@
     "dependencies": {
         "underscore": "underscore#1.4.4",
         "backbone": "#1.0.0",
-        "mtvn-package-manager": "mtvn-player/mtvn-package-manager#0.x.x",
+        "mtvn-package-manager": "p-js/package-manager#0.x.x",
         "handlebars": "handlebars.js#1.0.0"
     }
 }
