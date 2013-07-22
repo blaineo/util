@@ -2015,7 +2015,7 @@
     /* global Util, Backbone */
     // copy Backbone's extend method.
     Util.extend = Backbone.Model.extend;
-    /* global Util, Logger*/
+    /* global Util, Logger, _, Backbone*/
     /* exported Module */
     var Module = function(options) {
     	this.options = options || {};
@@ -2024,8 +2024,11 @@
     };
     Module.prototype = {
     	initialize: function() {},
-    	destroy: function() {}
+    	destroy: function() {
+    		this.stopListening();
+    	}
     };
+    _.extend(Module.prototype, Backbone.Events);
     Module.extend = Util.extend;
     Util.Module = Module;
     /*global Util, _ */
@@ -2175,7 +2178,10 @@
         };
         return data;
     };
-    /*global MTVNPlayer, _, Backbone*/
+    /* global _, Backbone, Util*/
+    /**
+     * Manage browser full screen methods for a variety of vendor prefixes.
+     */
     Util.FullScreen = function(document) {
     	var cancelFunc = document.cancelFullScreen || document.mozCancelFullScreen || document.webkitCancelFullScreen,
     		FullScreen = _.extend({}, Backbone.Events, {
@@ -2187,7 +2193,7 @@
     				}
     			},
     			requestFullScreen: function(element) {
-    					element = element || document.documentElement;
+    				element = element || document.documentElement;
     				var requestFunc = element.requestFullScreen || element.mozRequestFullScreen || element.webkitRequestFullScreen;
     				if (requestFunc) {
     					requestFunc.apply(element);
@@ -2307,5 +2313,5 @@
     context.Handlebars = previousHandlebars;
     Backbone.noConflict();
 })(this);
-MTVNPlayer.require("mtvn-util").version = "1.1.2";
-MTVNPlayer.require("mtvn-util").build = "06/25/2013 05:24:26 PM";
+MTVNPlayer.require("mtvn-util").version = "1.2.0";
+MTVNPlayer.require("mtvn-util").build = "07/22/2013 11:39:29 AM";
