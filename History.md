@@ -1,3 +1,9 @@
+
+1.3.0 / 2013-07-22 
+==================
+
+  * Mixin Backbone Events into the default Module prototype.
+  
 1.0.0 / 2013-06-21 
 ==================
 

@@ -1,4 +1,4 @@
-/* global Util, Logger*/
+/* global Util, Logger, _, Backbone*/
 /* exported Module */
 var Module = function(options) {
 	this.options = options || {};
@@ -7,7 +7,10 @@ var Module = function(options) {
 };
 Module.prototype = {
 	initialize: function() {},
-	destroy: function() {}
+	destroy: function() {
+		this.stopListening();
+	}
 };
+_.extend(Module.prototype, Backbone.Events);
 Module.extend = Util.extend;
 Util.Module = Module;

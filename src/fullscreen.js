@@ -1,4 +1,7 @@
-/*global MTVNPlayer, _, Backbone*/
+/* global _, Backbone, Util*/
+/**
+ * Manage browser full screen methods for a variety of vendor prefixes.
+ */
 Util.FullScreen = function(document) {
 	var cancelFunc = document.cancelFullScreen || document.mozCancelFullScreen || document.webkitCancelFullScreen,
 		FullScreen = _.extend({}, Backbone.Events, {
@@ -10,7 +13,7 @@ Util.FullScreen = function(document) {
 				}
 			},
 			requestFullScreen: function(element) {
-					element = element || document.documentElement;
+				element = element || document.documentElement;
 				var requestFunc = element.requestFullScreen || element.mozRequestFullScreen || element.webkitRequestFullScreen;
 				if (requestFunc) {
 					requestFunc.apply(element);
@@ -49,4 +52,4 @@ Util.FullScreen = function(document) {
 		}, false);
 	}
 	return FullScreen;
-}(document);	
+}(document);
