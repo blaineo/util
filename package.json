@@ -1,6 +1,6 @@
 {
     "name": "mtvn-util",
-    "version": "1.1.2",
+    "version": "1.2.0",
     "author": "gianni ferullo <giannif@gmail.com>",
     "private": true,
     "description": "util class, contains form factor parsing and backbone",
@@ -20,7 +20,7 @@
         "grunt-contrib-copy": "~0.4.1",
         "grunt-contrib-concat": "~0.3.0",
         "grunt-bumpx": "~0.1.5",
-        "grunt-testem": "~0.3.5"
+        "grunt-testem": "~0.3.6"
     },
     "main": "./dist/mtvn-util.js"
 }
