@@ -1,4 +1,9 @@
 
+1.3.1 / 2013-07-29 
+==================
+
+  * use function.call for document.cancelFullScreen
+
 1.3.0 / 2013-07-22 
 ==================
 
