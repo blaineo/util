@@ -7,7 +7,7 @@
         Backbone,
         _ = MTVNPlayer.require("_");
     // BEGIN THIRD PARTY CODE
-    //= ../components/handlebars/handlebars.runtime.js
+    //= ../components/handlebars/dist/handlebars.runtime.js
     MTVNPlayer.provide("Handlebars", Handlebars);
     // change "this" to a custom scope that has _ and $.
     (function() {

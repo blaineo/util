@@ -2195,15 +2195,15 @@
     			requestFullScreen: function(element) {
     				element = element || document.documentElement;
     				var requestFunc = element.requestFullScreen || element.mozRequestFullScreen || element.webkitRequestFullScreen;
-    				if (requestFunc) {
-    					requestFunc.apply(element);
+    				if (_.isFunction(requestFunc)) {
+    					requestFunc.call(element);
     					return true;
     				}
     				return false;
     			},
     			cancelFullScreen: function() {
-    				if (cancelFunc) {
-    					cancelFunc();
+    				if (_.isFunction(cancelFunc)) {
+    					cancelFunc.call(document);
     					return true;
     				}
     				return false;
@@ -2313,5 +2313,5 @@
     context.Handlebars = previousHandlebars;
     Backbone.noConflict();
 })(this);
-MTVNPlayer.require("mtvn-util").version = "1.3.0";
-MTVNPlayer.require("mtvn-util").build = "07/25/2013 07:25:16 PM";
+MTVNPlayer.require("mtvn-util").version = "1.3.1";
+MTVNPlayer.require("mtvn-util").build = "07/29/2013 01:53:29 PM";

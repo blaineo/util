@@ -15,15 +15,15 @@ Util.FullScreen = function(document) {
 			requestFullScreen: function(element) {
 				element = element || document.documentElement;
 				var requestFunc = element.requestFullScreen || element.mozRequestFullScreen || element.webkitRequestFullScreen;
-				if (requestFunc) {
-					requestFunc.apply(element);
+				if (_.isFunction(requestFunc)) {
+					requestFunc.call(element);
 					return true;
 				}
 				return false;
 			},
 			cancelFullScreen: function() {
-				if (cancelFunc) {
-					cancelFunc();
+				if (_.isFunction(cancelFunc)) {
+					cancelFunc.call(document);
 					return true;
 				}
 				return false;
