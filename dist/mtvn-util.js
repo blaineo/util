@@ -2019,7 +2019,7 @@
     /* exported Module */
     var Module = function(options) {
     	this.options = options || {};
-    	this.logger = new Logger(options.loggerName || this.name || this.moduleId || "Logger");
+    	this.logger = new Logger(this.options.loggerName || this.name || this.moduleId || "Logger");
     	this.initialize.apply(this, arguments);
     };
     Module.prototype = {
@@ -2313,5 +2313,5 @@
     context.Handlebars = previousHandlebars;
     Backbone.noConflict();
 })(this);
-MTVNPlayer.require("mtvn-util").version = "1.3.1";
-MTVNPlayer.require("mtvn-util").build = "07/29/2013 01:53:29 PM";
+MTVNPlayer.require("mtvn-util").version = "1.4.0";
+MTVNPlayer.require("mtvn-util").build = "08/02/2013 11:45:46 AM";
