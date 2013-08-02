@@ -2,7 +2,7 @@
 /* exported Module */
 var Module = function(options) {
 	this.options = options || {};
-	this.logger = new Logger(options.loggerName || this.name || this.moduleId || "Logger");
+	this.logger = new Logger(this.options.loggerName || this.name || this.moduleId || "Logger");
 	this.initialize.apply(this, arguments);
 };
 Module.prototype = {
