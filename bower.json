@@ -1,6 +1,6 @@
 {
     "name": "mtvn-util",
-    "version": "1.3.2",
+    "version": "1.4.0",
     "main": [
         "./dist/mtvn-util"
     ],
@@ -14,7 +14,7 @@
         "components"
     ],
     "dependencies": {
-        "underscore": "underscore#1.4.4",
+        "underscore": "underscore#1.5.1",
         "backbone": "#1.0.0",
         "mtvn-package-manager": "p-js/package-manager#0.x.x",
         "handlebars": "handlebars.js#1.0.x"

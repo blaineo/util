@@ -1,6 +1,6 @@
 {
     "name": "mtvn-util",
-    "version": "1.3.2",
+    "version": "1.4.0",
     "author": "gianni ferullo <giannif@gmail.com>",
     "private": true,
     "description": "util class, contains form factor parsing and backbone",

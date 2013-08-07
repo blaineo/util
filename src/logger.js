@@ -25,7 +25,7 @@ var Logger = (function() {
 
 	function Logger(name) {
 		this.prefix = name || "Logger";
-		_.bindAll(this); // so loggers can be event handlers.
+		_.bindAll(this, "debug", "info", "log", "warn", "error"); // so loggers can be event handlers.
 	}
 
 	function doLog(level, logger, args) {
