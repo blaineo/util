@@ -1979,7 +1979,7 @@
     
     	function Logger(name) {
     		this.prefix = name || "Logger";
-    		_.bindAll(this); // so loggers can be event handlers.
+    		_.bindAll(this, "debug", "info", "log", "warn", "error"); // so loggers can be event handlers.
     	}
     
     	function doLog(level, logger, args) {
@@ -2248,7 +2248,6 @@
     };
     Playlist.prototype = _.extend({
         initialize: function() {
-            _.bindAll(this);
             if (this.options.metadata) {
                 this.metadata = this.options.metadata;
                 this.currentItem = this.getCurrentItem();
@@ -2314,4 +2313,4 @@
     Backbone.noConflict();
 })(this);
 MTVNPlayer.require("mtvn-util").version = "1.4.0";
-MTVNPlayer.require("mtvn-util").build = "08/02/2013 11:45:46 AM";
+MTVNPlayer.require("mtvn-util").build = "08/07/2013 02:17:31 PM";

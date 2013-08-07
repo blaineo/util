@@ -10,7 +10,6 @@ Playlist.Events = {
 };
 Playlist.prototype = _.extend({
     initialize: function() {
-        _.bindAll(this);
         if (this.options.metadata) {
             this.metadata = this.options.metadata;
             this.currentItem = this.getCurrentItem();
