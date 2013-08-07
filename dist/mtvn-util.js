@@ -2312,5 +2312,5 @@
     context.Handlebars = previousHandlebars;
     Backbone.noConflict();
 })(this);
-MTVNPlayer.require("mtvn-util").version = "1.4.0";
-MTVNPlayer.require("mtvn-util").build = "08/07/2013 02:17:31 PM";
+MTVNPlayer.require("mtvn-util").version = "1.5.0";
+MTVNPlayer.require("mtvn-util").build = "08/07/2013 02:29:24 PM";
