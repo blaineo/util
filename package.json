@@ -10,6 +10,7 @@
     },
     "devDependencies": {
         "grunt": "0.4.x",
+        "testem": "x.x.x",
         "grunt-contrib": "0.4.x",
         "grunt-contrib-uglify": "*",
         "grunt-rigger": "~0.5.0",
@@ -20,7 +21,7 @@
         "grunt-contrib-copy": "~0.4.1",
         "grunt-contrib-concat": "~0.3.0",
         "grunt-bumpx": "~0.1.5",
-        "grunt-testem": "~0.3.6"
+        "grunt-testem": "0.4.x"
     },
     "main": "./dist/mtvn-util.js"
 }

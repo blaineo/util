@@ -2070,7 +2070,7 @@
         if (_.isArray(item.value)) {
             // set index to 0 if not defined.
             index = index || 0;
-            if(!Util.formFactorIgnoreOutOfRange && index > item.value.length - 1){
+            if (!Util.formFactorIgnoreOutOfRange && index > item.value.length - 1) {
                 throw "form factor index out of range for " + item.name;
             }
             return item.value[index];
@@ -2096,17 +2096,17 @@
         // create an object if we're not augmenting one.
         copyTo = copyTo || {};
         // take the input map and for each item reference the form factor object
-        _(inputMap).each(function(item, id) {
+        _.each(inputMap, function(item, id) {
             // if the string passed has the id in it
-            if (_(mapFromString).has(id)) {
+            if (_.has(mapFromString, id)) {
                 // take the string array of values and map them.
-                var result = _(mapFromString[id]).map(function(value) {
+                var result = _.map(mapFromString[id], function(value) {
                     return Util.getFormFactorValue(item, value);
                 });
                 // sometimes we want a single result to be an array, 
                 // and sometimes we want it to be an object.
                 item.format = _.isString(item.format) ? item.format : "";
-                if(result.length === 1 && item.format.toLowerCase() !== "array"){
+                if (result.length === 1 && item.format.toLowerCase() !== "array") {
                     result = result[0];
                 }
                 copyTo[item.name] = result;
@@ -2313,4 +2313,4 @@
     Backbone.noConflict();
 })(this);
 MTVNPlayer.require("mtvn-util").version = "1.5.0";
-MTVNPlayer.require("mtvn-util").build = "08/07/2013 02:29:24 PM";
+MTVNPlayer.require("mtvn-util").build = "10/05/2013 06:58:07 PM";
