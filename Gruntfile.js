@@ -2,9 +2,8 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        build: 'build/<%= grunt.config("dirname") %><%= pkg.version %><%= grunt.config("buildNumber") %>/',
         clean: {
-            folder: ["dist/*", "build/*"]
+            folder: ["dist/*"]
         },
         meta: {
             version: 'MTVNPlayer.require("<%= pkg.name %>").version = "<%= pkg.version %><%= grunt.config("buildNumber") %>";',
@@ -62,12 +61,20 @@ module.exports = function(grunt) {
             }
         },
         copy: {
-            build: {
-                src: "dist/**/*",
-                dest: "<%=build%>",
-                flatten: true,
-                expand: true
-
+            test: {
+                src: "test/**/*",
+                dest: "dist/"
+            }
+        },
+        push_svn: {
+            options: {
+                trymkdir: true,
+                remove: false
+            },
+            release: {
+                src: "./dist",
+                dest: '<%= grunt.config("svnDir") %>/<%= pkg.version %><%= grunt.config("buildNumber") %>',
+                tmp: './.build'
             }
         },
         watch: {
@@ -84,19 +91,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-bumpx');
     grunt.loadNpmTasks('grunt-testem');
-    grunt.registerTask('remove-globals', 'clean up', function() {
-        var globals = /\/\*global.*\*\//gi,
-            target = "dist/mtvn-util.js";
-        grunt.file.write(target, grunt.file.read(target).replace(globals, ""));
-    });
-    grunt.registerTask('dirname', 'set a subdirectory name, result will be build/subdirectory(s)', function(dir) {
-        if (dir.lastIndexOf("/") !== dir.length - 1) {
-            dir += "/";
+    grunt.loadNpmTasks("grunt-push-svn");
+    grunt.registerTask('deploy', 'deploy to svn', function() {
+        grunt.config("svnDir", grunt.option("dir"));
+        if (grunt.option("build")) {
+            grunt.config("buildNumber", "-" + grunt.option("build"));
         }
-        grunt.config("dirname", dir);
-    });
-    grunt.registerTask('buildNumber', 'append a build number to the build', function(buildNumber) {
-        grunt.config("buildNumber", "-" + buildNumber);
+        grunt.task.run("push_svn");
     });
     grunt.registerTask('default', ['clean', 'jshint:devel', 'rig']);
     grunt.registerTask('release', ['clean', 'jshint:devel', 'rig', 'uglify', 'copy']);
