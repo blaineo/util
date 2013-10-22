@@ -1,4 +1,11 @@
 
+1.5.0 / 2013-10-22 
+==================
+
+ * Update Gruntfile for deployment
+ * Support for lodash default build
+ 
+
 1.4.0 / 2013-08-07 
 ==================
 
