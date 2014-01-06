@@ -25,3 +25,6 @@ var myMap = mapFormFactorID("10:1",{"10":name:"fullEpisode",value:[false,true]})
 var myMap = mapFormFactorID("",{"10":name:"fullEpisode",value:[false,true],defaultValue:false});
 \\ myMap.fullEpisode = false;
 ```
+
+To deploy
+grunt deploy -dir https://subversion.1515.mtvi.com/phpsites/platform/media/media.mtvnservices.com/trunk/player/js/util

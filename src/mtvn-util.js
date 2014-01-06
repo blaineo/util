@@ -23,6 +23,7 @@
     // mtvn specific util code below...
     //= logger.js
     //= class.js
+    //= url.js
     //= module.js
     //= form-factor.js
     //= template-processor.js
