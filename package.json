@@ -3,7 +3,7 @@
 	"version": "1.8.0",
 	"author": "gianni ferullo <giannif@gmail.com>",
 	"scripts": {
-		"test": "grunt testem"
+		"test": "grunt testem --verbose"    
 	},
 	"private": true,
 	"description": "util class, contains form factor parsing and backbone",
@@ -24,7 +24,7 @@
 		"grunt-contrib-copy": "~0.4.1",
 		"grunt-contrib-concat": "~0.3.0",
 		"grunt-bumpx": "~0.1.5",
-		"grunt-testem": "0.4.x",
+		"grunt-testem": "0.6.x",
 		"grunt-push-svn": "~0.1.8"
 	},
 	"main": "./dist/mtvn-util.js"
