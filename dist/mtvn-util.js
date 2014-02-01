@@ -2458,6 +2458,12 @@
     })();
     /* global Util, Logger, _, Backbone*/
     /* exported Module */
+    /**
+     * Simple base class functionality.
+     * Subclass get an options and a logger.
+     * An initialize method and a destroy method.
+     * And Backbone.Events.
+     */
     var Module = function(options) {
     	this.options = options || {};
     	this.logger = new Logger(this.options.loggerName || this.name || this.moduleId || "Logger");
@@ -2753,5 +2759,5 @@
     context.Handlebars = previousHandlebars;
     Backbone.noConflict();
 })(window);
-MTVNPlayer.require("mtvn-util").version = "1.6.1";
-MTVNPlayer.require("mtvn-util").build = "01/31/2014 10:34:46 PM";
+MTVNPlayer.require("mtvn-util").version = "1.7.0";
+MTVNPlayer.require("mtvn-util").build = "02/01/2014 10:55:17 AM";
