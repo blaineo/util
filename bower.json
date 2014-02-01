@@ -14,8 +14,8 @@
         "components"
     ],
     "dependencies": {
-        "underscore": "underscore#1.5.1",
-        "backbone": "#1.0.0",
+        "underscore": "underscore#1.5.2",
+        "backbone": "#1.1.0",
         "mtvn-package-manager": "p-js/package-manager#0.x.x",
         "handlebars": "handlebars.js#1.0.x"
     }
