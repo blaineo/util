@@ -33,4 +33,4 @@
     MTVNPlayer.provide("mtvn-util", Util);
     context.Handlebars = previousHandlebars;
     Backbone.noConflict();
-})(this);
+})(window);
