@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/p-js/util.png?branch=develop)](https://travis-ci.org/p-js/util)
+
 This package takes some third party code and some common utility functions and `provides` them on the `MTVNPlayer` object.
 
 Once loaded:
