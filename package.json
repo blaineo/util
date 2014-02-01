@@ -3,7 +3,7 @@
 	"version": "1.8.0",
 	"author": "gianni ferullo <giannif@gmail.com>",
 	"scripts": {
-		"test": "grunt testem --verbose"
+		"test": "testem ci -l PhantomJS -t test/qunit/test.html"
 	},
 	"private": true,
 	"description": "util class, contains form factor parsing and backbone",
