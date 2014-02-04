@@ -3,7 +3,9 @@
 	"version": "1.8.0",
 	"author": "gianni ferullo <giannif@gmail.com>",
 	"scripts": {
-		"test": "testem ci -t test/qunit/test.html"
+		"test": "testem ci -t test/qunit/test.html -l PhantomJS",
+		"release": "grunt release",
+		"lint": "jshint src"
 	},
 	"private": true,
 	"description": "util class, contains form factor parsing and backbone",
