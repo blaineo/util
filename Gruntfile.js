@@ -1,13 +1,9 @@
 /*global module */
 module.exports = function(grunt) {
 	grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+		pkg: grunt.file.readJSON('package.json'),
 		clean: {
 			folder: ["dist/*"]
-		},
-		meta: {
-			version: 'MTVNPlayer.require("<%= pkg.name %>").version = "<%= pkg.version %><%= grunt.config("buildNumber") %>";',
-			buildDate: 'MTVNPlayer.require("<%= pkg.name %>").build = "<%= grunt.template.today("mm/dd/yyyy hh:MM:ss TT") %>";'
 		},
 		uglify: {
 			all: {
@@ -33,16 +29,37 @@ module.exports = function(grunt) {
 			}
 		},
 		rig: {
-			options: {
-				footer: '\n<%=meta.version%>\n<%=meta.buildDate%>'
-			},
 			devel: {
-				src: ['src/<%= pkg.name %>.js'],
+				src: ['src/build/<%= pkg.name %>.js'],
 				dest: 'dist/<%= pkg.name %>.js'
+			},
+			amd: {
+				src: ['src/build/amd.node.js'],
+				dest: 'dist/amd.node.js'
 			}
 		},
 		bump: {
 			files: ['package.json', 'bower.json']
+		},
+		replace: {
+			dist: {
+				options: {
+					patterns: [{
+						match: 'timestamp',
+						replacement: '<%= grunt.template.today() %>'
+					}, {
+						match: 'version',
+						replacement: '<%= pkg.version %><%= grunt.config("buildNumber") %>'
+					}]
+				},
+				files: [{
+					src: "dist/<%= pkg.name %>.js",
+					dest: "dist/<%= pkg.name %>.js"
+				}, {
+					src: "dist/amd.node.js",
+					dest: "dist/amd.node.js"
+				}]
+			}
 		},
 		testem: {
 			options: {
@@ -57,6 +74,10 @@ module.exports = function(grunt) {
 			test: {
 				src: "test/**/*",
 				dest: "dist/"
+			},
+			components: {
+				src: "components/**/*.{js,css}",
+				dest: "dist/test/"
 			}
 		},
 		push_svn: {
@@ -71,7 +92,7 @@ module.exports = function(grunt) {
 			}
 		},
 		watch: {
-			files: ['grunt.js', 'src/*.*'],
+			files: ['grunt.js', 'src/**.*', 'test/**.*'],
 			tasks: ['default']
 		}
 	});
@@ -83,6 +104,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-bumpx');
+	grunt.loadNpmTasks('grunt-replace');
 	grunt.loadNpmTasks('grunt-testem');
 	grunt.loadNpmTasks("grunt-push-svn");
 	grunt.registerTask('deploy', 'deploy to svn', function() {
@@ -92,6 +114,6 @@ module.exports = function(grunt) {
 		}
 		grunt.task.run("push_svn");
 	});
-	grunt.registerTask('default', ['clean', 'jshint:devel', 'rig']);
-	grunt.registerTask('release', ['clean', 'jshint:release', 'rig', 'uglify', 'copy']);
+	grunt.registerTask('default', ['clean', 'jshint:devel', 'rig', 'replace', 'copy']);
+	grunt.registerTask('release', ['clean', 'jshint:release', 'rig', 'replace', 'uglify', 'copy']);
 };

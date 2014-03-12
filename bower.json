@@ -1,23 +1,26 @@
 {
-    "name": "mtvn-util",
-    "version": "1.8.0",
-    "main": [
-        "./dist/mtvn-util"
-    ],
-    "ignore": [
-        "**/.*",
-        "test",
-        "src",
-        "testem.json",
-        "build",
-        "node_modules",
-        "components"
-    ],
-    "dependencies": {
-        "underscore": "underscore#1.5.2",
-        "backbone": "#1.1.0",
-        "mtvn-package-manager": "p-js/package-manager#0.x.x",
-        "handlebars": "handlebars#1.3.x",
-        "project-settings": "p-js/project-settings"
-    }
+	"name": "mtvn-util",
+	"version": "2.0.0",
+	"main": [
+		"./dist/mtvn-util"
+	],
+	"ignore": [
+		"**/.*",
+		"test",
+		"src",
+		"testem.json",
+		"build",
+		"node_modules",
+		"components"
+	],
+	"dependencies": {
+		"underscore": "underscore#1.6.0",
+		"backbone": "#1.1.0",
+		"handlebars": "handlebars#1.3.x",
+		"zepto": "~1.1.3",
+		"project-settings": "p-js/project-settings"
+	},
+	"devDependencies": {
+		"qunit": "~1.14.0"
+	}
 }
