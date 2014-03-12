@@ -2,7 +2,7 @@
 /**
  * Manage browser full screen methods for a variety of vendor prefixes.
  */
-Util.FullScreen = function(document) {
+Util.FullScreen = (function(document) {
 	var cancelFunc = document.cancelFullScreen || document.mozCancelFullScreen || document.webkitCancelFullScreen,
 		FullScreen = _.extend({}, Backbone.Events, {
 			toggle: function(element) {
@@ -52,4 +52,4 @@ Util.FullScreen = function(document) {
 		}, false);
 	}
 	return FullScreen;
-}(document);
+})(document);

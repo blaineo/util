@@ -1,4 +1,4 @@
-/* global _, MTVNPlayer, Util */
+/* global _, Util */
 /* exported Logger */
 var Logger = (function() {
 	var colors = {
@@ -19,17 +19,13 @@ var Logger = (function() {
 		}
 	});
 
-	if (!MTVNPlayer.debug) {
-		MTVNPlayer.debug = [];
-	}
-
 	function Logger(name) {
 		this.prefix = name || "Logger";
 		_.bindAll(this, "debug", "info", "log", "warn", "error"); // so loggers can be event handlers.
 	}
 
 	function doLog(level, logger, args) {
-		var loggers = MTVNPlayer.debug.toString().toLowerCase();
+		var loggers = Logger.getFilters();
 		if (loggers.indexOf("all") !== -1 || logger.prefix.toLowerCase().indexOf(loggers) !== -1) {
 			var prefix = "[" + logger.prefix + "]";
 			args = _.toArray(args);
@@ -55,6 +51,12 @@ var Logger = (function() {
 			doLog("error", this, arguments);
 		}
 	});
+	Logger.getFilters = function() {
+		if (!Logger.fiters) {
+			return "";
+		}
+		return Logger.filters.toString().toLowerCase();
+	};
 	return Logger;
 })();
 Util.Logger = Logger;

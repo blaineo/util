@@ -1,4 +1,12 @@
 
+2.0.0 / 2014-03-12 
+==================
+
+ * Removed references to MTVNPlayer, so it can be more easily integrated into the player build.
+ * travis-ci integration.
+ * Use Handlebars 1.3.x. 
+ * Add build status image.
+
 1.7.0 / 2014-02-01 
 ==================
 
