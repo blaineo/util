@@ -10,8 +10,8 @@
 	/* global Util */
 	/*global _, $*/
 	var Util = {
-		version: "1.8.0",
-		build: "Wed Mar 12 2014 16:26:55"
+		version: "2.0.0",
+		build: "Wed Mar 12 2014 16:39:27"
 	};
 	// BEGIN THIRD PARTY CODE
 	/*!
