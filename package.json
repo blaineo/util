@@ -1,6 +1,6 @@
 {
 	"name": "mtvn-util",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"author": "gianni ferullo <giannif@gmail.com>",
 	"scripts": {
 		"test": "testem ci -t dist/test/test.html -l PhantomJS",
