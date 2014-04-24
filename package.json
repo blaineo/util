@@ -10,7 +10,7 @@
 	"description": "utils, fullscreen, logger, base class (Module), playlist",
 	"repository": {
 		"type": "git",
-		"url": "https://mtvn-player@github.com/mtvn-player/mtvn-util.git"
+		"url": "https://mtvn-player@github.com/p-js/util.git"
 	},
 	"devDependencies": {
 		"grunt": "0.4.x",

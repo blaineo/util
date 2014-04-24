@@ -8,8 +8,8 @@
 }(this, function(_, $, Backbone, Handlebars) {
 	/* exported Util */
 	var Util = {
-		version: "2.0.0",
-		build: "Wed Apr 23 2014 20:33:07"
+		version: "2.2.0",
+		build: "Thu Apr 24 2014 10:21:25"
 	};
 	/* jshint unused:false */
 	/* global Util */
