@@ -1,6 +1,6 @@
 {
 	"name": "pjs-util",
-	"version": "2.2.0",
+	"version": "2.3.0",
 	"author": "gianni ferullo <giannif@gmail.com>",
 	"scripts": {
 		"test": "testem ci -t dist/test/test.html -l PhantomJS && testem ci -t dist/test/test-bundled.html -l PhantomJS",
