@@ -2,8 +2,8 @@
 var Util = (function(_, $, Backbone, Handlebars) {
 	/* exported Util */
 	var Util = {
-		version: "@@version",
-		build: "@@timestamp"
+		version: "2.2.1",
+		build: "Thu Apr 24 2014 11:37:16"
 	};
 	// jshint unused:false
 	/*global Backbone, Util*/

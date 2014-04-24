@@ -1,33 +1,33 @@
 {
-  "name": "pjs-util",
-  "version": "2.2.1",
-  "author": "gianni ferullo <giannif@gmail.com>",
-  "main": [
-    "./dist/util.js",
-    "./dist/amd.js",
-    "./dist/util-bundled.js"
-  ],
-  "description": "util class, contains form factor parsing and backbone",
-  "repository": {
-    "type": "git",
-    "url": "https://mtvn-player@github.com/p-js/util.git"
-  },
-  "ignore": [
-    "Gruntfile.js",
-    "test",
-    "src",
-    "node_modules",
-    "bower_components",
-    "components"
-  ],
-  "dependencies": {
-    "underscore": "^1.6.0",
-    "backbone": "~1.1.0",
-    "handlebars": "~1.3.0",
-    "zepto": "~1.1.3"
-  },
-  "devDependencies": {
-    "project-settings": "p-js/project-settings",
-    "qunit": "^1.14.0"
-  }
+	"name": "pjs-util",
+	"version": "2.2.1",
+	"author": "gianni ferullo <giannif@gmail.com>",
+	"main": [
+		"dist/util.js",
+		"dist/amd.js",
+		"dist/util-bundled.js"
+	],
+	"description": "util class, contains form factor parsing and backbone",
+	"repository": {
+		"type": "git",
+		"url": "https://mtvn-player@github.com/p-js/util.git"
+	},
+	"ignore": [
+		"Gruntfile.js",
+		"test",
+		"src",
+		"node_modules",
+		"bower_components",
+		"components"
+	],
+	"dependencies": {
+		"underscore": "^1.6.0",
+		"backbone": "~1.1.0",
+		"handlebars": "~1.3.0",
+		"zepto": "~1.1.3"
+	},
+	"devDependencies": {
+		"project-settings": "p-js/project-settings",
+		"qunit": "^1.14.0"
+	}
 }

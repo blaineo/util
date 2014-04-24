@@ -6,8 +6,8 @@ var Util = (function(_, $) {
 	 */
 	/* exported Util */
 	var Util = {
-		version: "@@version",
-		build: "@@timestamp"
+		version: "2.2.1",
+		build: "Thu Apr 24 2014 11:37:16"
 	};
 	// BEGIN THIRD PARTY CODE
 	/* global Handlebars */
