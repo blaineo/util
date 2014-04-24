@@ -1,6 +1,6 @@
 {
 	"name": "pjs-util",
-	"version": "2.3.0",
+	"version": "2.2.1",
 	"author": "gianni ferullo <giannif@gmail.com>",
 	"main": [
 		"dist/util.js",
