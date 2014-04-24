@@ -9,8 +9,11 @@
   <script type="text/javascript" src="components/zepto/zepto.js"></script>
   <script type="text/javascript" src="components/backbone/backbone.js"></script>
   <script type="text/javascript" src="components/handlebars/handlebars.runtime.js"></script>
+  <script>
+    window.Backbone.original = window.Handlebars.original = true;
+  </script>
   <script type="text/javascript" src="components/qunit/qunit/qunit.js"></script>
-  <script src="../util.js"></script>
+  <script src="../util-bundled.js"></script>
   <script src="/testem.js"></script>
 </head>
 <body>
@@ -20,6 +23,7 @@
   <script src="fullscreen-test.js"></script>
   <script src="logger-test.js"></script>
   <script src="playlist-test.js"></script>
+  <script src="noconflict.js">
   </script>
 </body>
 </html>
