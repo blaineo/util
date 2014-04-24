@@ -1,4 +1,12 @@
 
+2.2.0 / 2014-04-24 
+==================
+
+ * amd support.
+ * Don't include deps in util.js. 
+ * util-bundled.js has deps, for now.
+ * Move project settings to devDependencies
+
 2.0.0 / 2014-03-12 
 ==================
 
