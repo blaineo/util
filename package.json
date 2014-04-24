@@ -1,17 +1,16 @@
 {
-	"name": "mtvn-util",
-	"version": "2.1.0",
+	"name": "pjs-util",
+	"version": "2.2.0",
 	"author": "gianni ferullo <giannif@gmail.com>",
 	"scripts": {
-		"test": "testem ci -t dist/test/test.html -l PhantomJS",
+		"test": "testem ci -t dist/test/test.html -l PhantomJS && testem ci -t dist/test/test-bundled.html -l PhantomJS",
 		"release": "grunt release",
 		"lint": "jshint src"
 	},
-	"private": true,
-	"description": "util class, contains form factor parsing and backbone",
+	"description": "utils, fullscreen, logger, base class (Module), playlist",
 	"repository": {
 		"type": "git",
-		"url": "https://mtvn-player@github.com/mtvn-player/mtvn-util.git"
+		"url": "https://mtvn-player@github.com/p-js/util.git"
 	},
 	"devDependencies": {
 		"grunt": "0.4.x",
@@ -25,10 +24,10 @@
 		"grunt-contrib-clean": "~0.4.1",
 		"grunt-contrib-copy": "~0.4.1",
 		"grunt-contrib-concat": "~0.3.0",
-		"grunt-bumpx": "~0.1.5",
+		"grunt-bumpx": "~0.2.0",
 		"grunt-testem": "0.x.x",
 		"grunt-push-svn": "~0.1.8",
 		"grunt-replace": "^0.7.2"
 	},
-	"main": "./dist/mtvn-util.js"
+	"main": "./dist/amd.js"
 }

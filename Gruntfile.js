@@ -5,17 +5,21 @@ module.exports = function(grunt) {
 		clean: {
 			folder: ["dist/*"]
 		},
-		uglify: {
-			all: {
-				files: {
-					"dist/mtvn-util.min.js": "dist/mtvn-util.js"
-				}
+		rig: {
+			devel: {
+				expand: true,
+				cwd: "src/build/",
+				src: '*.js',
+				dest: 'dist/'
 			}
 		},
-		removelogging: {
-			dist: {
-				src: "dist/<%= pkg.name %>.js",
-				dest: "dist/<%= pkg.name %>.js"
+		uglify: {
+			all: {
+				expand: true,
+				cwd: "dist/",
+				src: '*.js',
+				ext: ".min.js",
+				dest: 'dist/'
 			}
 		},
 		jshint: {
@@ -26,16 +30,6 @@ module.exports = function(grunt) {
 			release: {
 				options: grunt.file.readJSON("./components/project-settings/jshint.json"),
 				src: ['src/**/*.js']
-			}
-		},
-		rig: {
-			devel: {
-				src: ['src/build/<%= pkg.name %>.js'],
-				dest: 'dist/<%= pkg.name %>.js'
-			},
-			amd: {
-				src: ['src/build/amd.node.js'],
-				dest: 'dist/amd.node.js'
 			}
 		},
 		bump: {
@@ -52,13 +46,8 @@ module.exports = function(grunt) {
 						replacement: '<%= pkg.version %><%= grunt.config("buildNumber") %>'
 					}]
 				},
-				files: [{
-					src: "dist/<%= pkg.name %>.js",
-					dest: "dist/<%= pkg.name %>.js"
-				}, {
-					src: "dist/amd.node.js",
-					dest: "dist/amd.node.js"
-				}]
+				src: "dist/*.js",
+				dest: "dist/"
 			}
 		},
 		testem: {
