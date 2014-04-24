@@ -1,11 +1,11 @@
 {
 	"name": "pjs-util",
-	"version": "2.2.0",
+	"version": "2.2.1",
 	"author": "gianni ferullo <giannif@gmail.com>",
 	"main": [
-		"./dist/util.js",
-		"./dist/amd.js",
-		"./dist/util-bundled.js"
+		"dist/util.js",
+		"dist/amd.js",
+		"dist/util-bundled.js"
 	],
 	"description": "util class, contains form factor parsing and backbone",
 	"repository": {

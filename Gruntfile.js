@@ -47,7 +47,7 @@ module.exports = function(grunt) {
 					}]
 				},
 				src: "dist/*.js",
-				dest: "dist/"
+				dest: "./"
 			}
 		},
 		testem: {
